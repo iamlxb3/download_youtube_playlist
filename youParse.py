@@ -56,7 +56,11 @@ def crawl(url):
             sys.stdout.write(all_url[i] + '\n')
             time.sleep(0.04)
             i = i + 1
-
+            
+        with open ('urls.txt', 'w', encoding='utf-8') as f:
+            for url in all_url:
+                f.write(url+'\n')
+        
     else:
         print('No videos found.')
         exit(1)
