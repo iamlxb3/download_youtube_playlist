@@ -72,7 +72,7 @@ youParse: https://github.com/pantuts/youParse
     
     例子:
     ```
-    PLnb9O8b6HG-ohVjLN3itqaSTf6YuDbR9E, JJ # seperated by comma, [playlist_id, save_folder_name]
+    PLnb9O8b6HG-ohVjLN3itqaSTf6YuDbR9E, JJ # 以逗号分隔, [playlist_id, save_folder_name]
     playlist_id2, foldername2
     playlist_id3, foldername3
     ....
