@@ -1,7 +1,11 @@
 '''A wrapper of youParse and youget
-Only for downloading Youtube playlists, for single youtube viedo, check you-get.
-
+Only for downloading Youtube playlists, for single youtube video, check you-get.
 '''
+
+__version__ = '0.0.1'
+__license__ = 'GPL'
+__author__ = 'PJS'
+
 import sys
 import subprocess
 from youParse import crawl
