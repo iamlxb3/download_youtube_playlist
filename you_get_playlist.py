@@ -1,7 +1,18 @@
 '''A wrapper of youParse and youget
+<<<<<<< HEAD
 Only for downloading Youtube playlists, for single youtube viedo, check you-get.
-
+=======
+youParse: https://github.com/pantuts/youParse
+you-get: https://github.com/soimort/you-get
+Only for downloading videos from Youtube playlists, for single youtube video, check you-get.
 '''
+
+__version__ = '0.0.1'
+__license__ = 'GPL'
+__author__ = 'PJS'
+
+
+
 import sys
 import subprocess
 from youParse import crawl
