@@ -1,44 +1,77 @@
+'''A wrapper of youParse and youget
+Only for downloading Youtube playlists, for single youtube viedo, check you-get.
+
+'''
+import sys
 import subprocess
+from youParse import crawl
 import os
+import platform
+import getopt
+# import io
+# sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
-playlist_url_list = [
-                     ('https://www.youtube.com/playlist?list=PLZ9qNFMHZ-A4rycgrgOYma6zxF4BZGGPW', 'Machine learning coursera'),
-                     ('https://www.youtube.com/playlist?list=PLbkzipe1EfZ7lxuiSK74ORwjDEzHQ69Z6', 'HIIT'),
-                     ('https://www.youtube.com/playlist?list=PLVU0H2WW8HDeDLuh3E8Xmu2pM7IffYAPH', 'Gordon Ramsay Desserts'),
-                     ('https://www.youtube.com/playlist?list=PLyFUz_D_yq8sWsolcsuFy93Myx_CXqRPR', 'English'),
-                     ('https://www.youtube.com/playlist?list=PLyFUz_D_yq8v5ourcsWcbYqBgGtyKum1i', 'Machine Learning'),
-                     ('https://www.youtube.com/playlist?list=PLTOBJKrkhpoMdsT9RUERSDdEVrViykAEQ', 'Advanced Python'),
-                     ('https://www.youtube.com/playlist?list=PLhoHEZlJjdQLDmn0aMkX9uzb4EYjEYh_8', 'MLAI 2015'),
-                     ('https://www.youtube.com/playlist?list=PLkDaE6sCZn6FcbHlDzbVzf3TVgxzxK7lr', 'Heroes_of_Deep_Learning_Interviews'),
-                     ('https://www.youtube.com/playlist?list=PLkDaE6sCZn6Hn0vK8co82zjQtt3T2Nkqc', 'Improving_deep_neural_networks'),
-                     ('https://www.youtube.com/playlist?list=PLkDaE6sCZn6Ec-XTbcX1uRg2_u4xOEky0', 'Neural_Networks_and_Deep_Learning'),
-                     ('https://www.youtube.com/playlist?list=PLkDaE6sCZn6E7jZ9sN_xHwSHOdjUxUW_b', 'Structuring_Machine_Learning_Projects'),
-                     ('https://www.youtube.com/playlist?list=PLyFUz_D_yq8tB5SdoThPkHUoPdwj_UbqK', 'Andrew_Ng')
-                     
-                     ]
-                
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
-                
-for playlist_url, save_dir_name in playlist_url_list:
+# customize save folder
+save_dir_path = ''
+try:
+    opts, args = getopt.getopt(sys.argv[1:], "", ["dir="])
+    for o, a in opts:
+        if o == '--dir':
+            save_dir_path = a
+except getopt.GetoptError:
+    raise Exception('Usage: python you_get_playlist.py --dir=D:\\example')
+
+
+# default save_dir_path
+if not save_dir_path:
+    save_dir_path = os.path.dirname(os.path.abspath(__file__))
+else:
+    # check user input dir
+    is_save_dir_path = os.path.isdir(save_dir_path)
+    if not is_save_dir_path:
+        raise Exception('Target dir "{}" does not exist!!'.format(save_dir_path))
+#
+
+
+# the encoding is for windows notepad
+with open ('playlists.txt', 'r', encoding='utf-8-sig') as f:
+
+    # iterate over all playlists
+    for line in f:
+        # get playlist url and name
+        if line.count(',') != 1:
+            raise Exception('Invalid format for input!! Please check readme.')
+        url, folder_name = line.split(',')
+        url = url.strip()
+        url = "https://www.youtube.com/playlist?list={}".format(url)
+        folder_name = folder_name.strip()
+        #
     
-    # replace space with '_'
-    save_dir_name = save_dir_name.replace(' ', '_')
+        # replace space with '_'
+        save_folder_name = folder_name.replace(' ', '_')
+        #
 
-    subprocess.call("python youParse.py {}".format(playlist_url), shell=True)
-    save_dir_path = os.path.join(current_dir, save_dir_name)
-    is_dir_exist = os.path.isdir(save_dir_path)
-    if not is_dir_exist:
-        print ("making dir '{}'".format(save_dir_path))
-        os.makedirs(save_dir_path)
-    
-    with open ('urls.txt', 'r') as f:
-        for i, line in enumerate(f):
-            # if i == 2:
-                # break
-            url = line.strip()
-            if save_dir_name:
-                subprocess.call("you-get -o {} {}".format(save_dir_name, url), shell=True)
+        # get all video urls for 1 playlist
+        print (url)
+        all_video_urls = crawl(url)
+        #
+
+        # make new folders and be ready for saving videos
+        playlist_save_dir_path = os.path.join(save_dir_path, save_folder_name)
+        is_playlist_dir = os.path.isdir(playlist_save_dir_path)
+        if not is_playlist_dir:
+            os.makedirs(playlist_save_dir_path)
+            dir_naming_valid = os.path.isdir(playlist_save_dir_path)
+            if not dir_naming_valid:
+                raise Exception('Please check the name of your folder-{}! Maybe invalid in your system: {}'
+                                .format(folder_name, platform.platform()))
             else:
-                subprocess.call("you-get {}".format(url), shell=True)
-        
+                print("Create directory '{}' done!".format(playlist_save_dir_path))
+                print("Calling you-get...Wait...".format(playlist_save_dir_path))
+        #
+
+        # call you-get
+        for video_url in all_video_urls:
+            subprocess.Popen(['you-get', '-o', save_folder_name, video_url])
+        #

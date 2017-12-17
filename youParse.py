@@ -56,17 +56,22 @@ def crawl(url):
             sys.stdout.write(all_url[i] + '\n')
             time.sleep(0.04)
             i = i + 1
-
+            
+        # with open ('playlists.txt', 'w', encoding='utf-8') as f:
+        #     for url in all_url:
+        #         f.write(url+'\n')
+        return all_url
+        
     else:
         print('No videos found.')
         exit(1)
 
-if len(sys.argv) < 2 or len(sys.argv) > 2:
-    print('USAGE: python3 youParse.py YOUTUBEurl')
-    exit(1)
-
-else:
-    url = sys.argv[1]
-    if 'http' not in url:
-        url = 'http://' + url
-    crawl(url)
+# if len(sys.argv) < 2 or len(sys.argv) > 2:
+#     print('USAGE: python3 youParse.py YOUTUBEurl')
+#     exit(1)
+#
+# else:
+#     url = sys.argv[1]
+#     if 'http' not in url:
+#         url = 'http://' + url
+#     crawl(url)
