@@ -34,12 +34,3 @@ youParse: https://github.com/pantuts/youParse
     playlist_id3, foldername3
     ....
     ```
-    
-2. Start Download
-    ```
-    # default model, videos will be saved to corresponding download_youtube_playlist/.../ folder
-    python you_get_playlist.py
-    
-    # or you can customize the directory for saving
-    python you_get_playlist.py --dir=D:\ 
-    ```
