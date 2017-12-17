@@ -1,4 +1,6 @@
 '''A wrapper of youParse and youget
+youParse: https://github.com/pantuts/youParse
+you-get: https://github.com/soimort/you-get
 Only for downloading Youtube playlists, for single youtube video, check you-get.
 '''
 

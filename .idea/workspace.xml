@@ -16,22 +16,10 @@
       <file leaf-file-name="you_get_playlist.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/you_get_playlist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
-                <element signature="e#184#194#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="youParse.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/youParse.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-              <folding>
-                <element signature="e#482#491#0" expanded="true" />
+                <element signature="e#274#284#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -171,7 +159,7 @@
         <state relative-caret-position="704">
           <caret line="76" column="9" lean-forward="false" selection-start-line="76" selection-start-column="9" selection-end-line="76" selection-end-column="9" />
           <folding>
-            <element signature="e#184#194#0" expanded="true" />
+            <element signature="e#274#284#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -186,7 +174,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/youParse.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
+        <state relative-caret-position="-766">
           <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
           <folding>
             <element signature="e#482#491#0" expanded="true" />
@@ -196,10 +184,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/you_get_playlist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#184#194#0" expanded="true" />
+            <element signature="e#274#284#0" expanded="true" />
           </folding>
         </state>
       </provider>
