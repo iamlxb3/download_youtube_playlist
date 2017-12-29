@@ -1,7 +1,4 @@
 '''A wrapper of youParse and youget
-<<<<<<< HEAD
-Only for downloading Youtube playlists, for single youtube viedo, check you-get.
-=======
 youParse: https://github.com/pantuts/youParse
 you-get: https://github.com/soimort/you-get
 Only for downloading videos from Youtube playlists, for single youtube video, check you-get.
@@ -84,5 +81,6 @@ with open ('playlists.txt', 'r', encoding='utf-8-sig') as f:
 
         # call you-get
         for video_url in all_video_urls:
-            subprocess.Popen(['you-get', '-o', save_folder_name, video_url])
+            #subprocess.Popen(['you-get', '-o', save_folder_name, video_url])
+            subprocess.call("you-get -o {} {}".format(save_folder_name, video_url), shell=True)
         #
